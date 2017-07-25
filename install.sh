@@ -41,6 +41,10 @@ function build()
 	cd $HOME/arduino_ide
 	arduino --board esp8266:esp8266:$board --save-prefs
   	./arduino --verbose-build --verify $ino
+  	echo $HOME/mybuild/${inoFilename}.bin
+  	echo $HOME/releases/${filename} ${board}.bin
+  	ls -l $HOME/mybuild
+  	ls -l $HOME/releases
   	cp $HOME/mybuild/${inoFilename}.bin "$HOME/releases/${filename} ${board}.bin"
 }
 	
