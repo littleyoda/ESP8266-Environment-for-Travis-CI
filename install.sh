@@ -7,7 +7,7 @@ if [ "${BASH_VERSION%%[^0-9]*}" -lt "4" ]; then
 fi
 
 mkdir $HOME/mybuild
-mkdie $HOMW/releases
+mkdir $HOME/releases
 
 # Install Arduino to ~/arduino_ide
 wget -c https://downloads.arduino.cc/arduino-1.8.3-linux64.tar.xz
@@ -40,11 +40,9 @@ function build()
 	rm -rf $HOME/mybuild/*
 	cd $HOME/arduino_ide
 	arduino --board esp8266:esp8266:$board --save-prefs
-  	./arduino --verbose-build --verify $ino
-  	echo $HOME/mybuild/${inoFilename}.bin
-  	echo $HOME/releases/${filename} ${board}.bin
+  	./arduino --verbose-build --verify "$ino"
   	ls -l $HOME/mybuild
   	ls -l $HOME/releases
-  	cp $HOME/mybuild/${inoFilename}.bin "$HOME/releases/${filename} ${board}.bin"
+  	cp $HOME/mybuild/"${inoFilename}.bin" "$HOME/releases/${filename} ${board}.bin"
 }
 	
