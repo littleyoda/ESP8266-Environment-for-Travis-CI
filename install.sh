@@ -34,12 +34,13 @@ function build()
 {
 	local ino=$1
 	local board=$2
-	
+	local inoFilename=`basename "$1"`	
+	local filename=`basename "$inoFilename" .ino`	
 	echo $ino $board	
 	rm -rf $HOME/mybuild/*
 	cd $HOME/arduino_ide
 	arduino --board esp8266:esp8266:$board --save-prefs
   	./arduino --verbose-build --verify $ino
-  	cp $ino.bin "$HOME/releases/${ino} ${board}.bin"
+  	cp $HOME/mybuild/${inoFilename}.bin "$HOME/releases/${filename} ${board}.bin"
 }
 	
