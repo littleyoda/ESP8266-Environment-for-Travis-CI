@@ -29,6 +29,7 @@ arduino --board esp8266:esp8266:nodemcuv2 --pref build.path=$HOME/mybuild --pref
 sed -i.bak 's/nodemcu.menu.FlashSize.4M3M/nodemcu/g' $HOME/.arduino15/packages/esp8266/hardware/esp8266/2.3.0/boards.txt
 sed -i.bak 's/nodemcuv2.menu.FlashSize.4M3M/nodemcuv2/g' $HOME/.arduino15/packages/esp8266/hardware/esp8266/2.3.0/boards.txt
 sed -i.bak 's/d1_mini.menu.FlashSize.4M3M/d1_mini/g' $HOME/.arduino15/packages/esp8266/hardware/esp8266/2.3.0/boards.txt
+sed -i.bak 's/esp8285.menu.FlashSize.1M128/esp8285/g' $HOME/.arduino15/packages/esp8266/hardware/esp8266/2.3.0/boards.txt
 
 function build()
 {
