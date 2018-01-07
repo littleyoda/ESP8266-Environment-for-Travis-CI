@@ -11,7 +11,7 @@ mkdir $HOME/releases
 
 # Install Arduino to ~/arduino_ide
 wget -c https://downloads.arduino.cc/arduino-1.8.3-linux64.tar.xz
-tar xf arduino-1.8.3-linux64.tar.xz
+tar xvf arduino-1.8.3-linux64.tar.xz
 mv arduino-1.8.3 $HOME/arduino_ide
 export PATH="$HOME/arduino_ide:$PATH"
 
@@ -25,7 +25,7 @@ arduino --board esp8266:esp8266:nodemcuv2 --pref build.path=$HOME/mybuild --pref
 # Fixing a Problem with the boards.txt
 # ld: cannot open linker script file {build.flash_ld}: No such file or directory
 # choosing "4M (3M SPIFFS)" Configuration
-file=`find .arduino15/packages/esp8266/ -type f -name 'boards.txt'`
+file=`find $HOME/.arduino15/packages/esp8266/ -type f -name 'boards.txt'`
 echo Changing $file
 sed -i.bak 's/nodemcu.menu.FlashSize.4M3M/nodemcu/g' $file
 sed -i.bak 's/nodemcuv2.menu.FlashSize.4M3M/nodemcuv2/g' $file
