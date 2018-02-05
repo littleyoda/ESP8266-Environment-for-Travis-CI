@@ -37,6 +37,11 @@ do
 	echo "${i}.build.f_cpu=80000000L" >> $file
 done
 
+function replaceStringWithGitHubTag() {
+	gitversion=`git describe --tags $3`
+	sed -i.bak "s#${2}#${gitversion}#g" $1
+}
+
 function build()
 {
 	local ino=$1
