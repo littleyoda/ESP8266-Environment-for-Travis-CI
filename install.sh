@@ -38,7 +38,8 @@ do
 done
 
 function replaceStringWithGitHubTag() {
-	gitversion=`git describe --tags $3`
+	cd "$3"
+	gitversion=`git describe --tags`
 	sed -i.bak "s#${2}#${gitversion}#g" $1
 }
 
