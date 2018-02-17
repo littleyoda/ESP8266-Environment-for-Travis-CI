@@ -27,6 +27,7 @@ arduino --board esp8266:esp8266:nodemcuv2 --pref build.path=$HOME/mybuild --pref
 # choosing "4M (3M SPIFFS)" Configuration
 file=`find $HOME/.arduino15/packages/esp8266/ -type f -name 'boards.txt'`
 echo Changing $file
+
 sed -i.bak 's/nodemcu.menu.FlashSize.4M3M/nodemcu/g' $file
 sed -i.bak 's/nodemcuv2.menu.FlashSize.4M3M/nodemcuv2/g' $file
 sed -i.bak 's/d1_mini.menu.FlashSize.4M3M/d1_mini/g' $file
@@ -36,6 +37,15 @@ for i in nodemcu nodemcuv2 d1_mini esp8285
 do
 	echo "${i}.build.f_cpu=80000000L" >> $file
 done
+
+function lwip()
+{
+	file=`find $HOME/.arduino15/packages/esp8266/ -type f -name 'boards.txt'`
+	for i in nodemcu nodemcuv2 d1_mini esp8285
+	do
+		sed -i.bak "s/${i}.menu.LwIPVariant.${1}/${i}/g" $file
+	done
+}
 
 function replaceStringWithGitHubTag() {
 	cd "$3"
