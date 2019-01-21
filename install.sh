@@ -16,7 +16,7 @@ mv arduino-1.8.3 $HOME/arduino_ide
 export PATH="$HOME/arduino_ide:$PATH"
 
 
-arduino --pref "boardsmanager.additional.urls=http://arduino.esp8266.com/stable/package_esp8266com_index.json" --install-boards esp8266:esp8266 --save-prefs
+arduino --pref "boardsmanager.additional.urls=http://arduino.esp8266.com/stable/package_esp8266com_index.json" --install-boards esp8266:esp8266:2.4.1 --save-prefs
 arduino --install-library USBHost 
 
 # Default to NodeMCU V2
